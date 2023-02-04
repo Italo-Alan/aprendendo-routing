@@ -1,1 +1,8 @@
-<p>cursos works!</p>
+<!-- O router link que é passado recebe 2 parâmetros, a rota e a informação que ele deseja passar -->
+<div class="collection">
+  <a class="collection-item"
+    *ngFor="let curso of cursos"
+    [routerLink]="['/curso', curso.id]">
+     {{ curso.nome }}
+  </a>
+</div>
