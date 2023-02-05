@@ -1,3 +1,5 @@
+import { NgModule } from '@angular/core';
+
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from "@angular/router";
 
@@ -8,7 +10,7 @@ import { CursoDetalheComponent } from './cursos/curso-detalhe/curso-detalhe.comp
 import { CursoNaoEncontradoComponent } from './cursos/curso-nao-encontrado/curso-nao-encontrado.component';
 
 //Dentro desse array que declaramos todas as nossas rotas.
-const APP_ROUTES: Routes = [
+const appRoutes: Routes = [
   { path:'', component: HomeComponent},
   //Caso seja necessário colocar um outro caminho que precise de um ID, faremos da seguinte forma:
   { path:'cursos', component: CursosComponent},
@@ -19,4 +21,12 @@ const APP_ROUTES: Routes = [
 ];
 
 //Usamos aqui o forRoot porque aqui temos as rotas raízes da aplicação.
-export const routing: ModuleWithProviders<RouterModule> = RouterModule.forRoot(APP_ROUTES);
+// export const routing: ModuleWithProviders<RouterModule> = ;
+
+@NgModule({
+  imports:[RouterModule.forRoot(appRoutes)],
+  exports:[RouterModule]
+})
+export class AppRoutingModule{
+
+}
