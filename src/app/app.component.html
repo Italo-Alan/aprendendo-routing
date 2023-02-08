@@ -1,5 +1,7 @@
 <!-- routerlink possibilida declarar para onde a página será redirecionada -->
-<nav>
+
+<!-- Mostramos ou não o menu com esse ngIf -->
+<nav *ngIf="mostrarMenu">
   <div class="nav-wrapper">
     <a routerLink="" class="brand-logo right">Rotas Ng2</a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">

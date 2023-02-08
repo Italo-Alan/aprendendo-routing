@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 
 const alunosRoutes: Routes = [
   //Dessa forma, fazemos com que o componente e a rota alunos sejam os principais e os dentro do array sejam componentes filhos
-  {path: 'alunos', component: AlunosComponent, children:[
+  {path: '', component: AlunosComponent, children:[
     //Por '/novo' ter sido adicionado hard coded, ele precisa vir primeiro para não ter colisão de rotas
     {path: 'novo', component: AlunoFormComponent},
     {path: ':id', component: AlunoDetalheComponent},
