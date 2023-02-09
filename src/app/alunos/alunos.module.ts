@@ -1,3 +1,4 @@
+import { AlunoDetalheResolver } from './guards/aluno-detalhe.resolver';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,6 +8,7 @@ import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
 import { AlunosRoutingModule } from './alunos.routing.module';
 import { AlunosService } from './alunos.service';
 import { FormsModule } from '@angular/forms';
+import { AlunosDeactivateGuard } from '../guards/alunos-deactivate.guard';
 
 @NgModule({
   imports: [
@@ -22,7 +24,9 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
     //Todos os componentes declarados acima poderão usar esse serviço
-    AlunosService
+    AlunosService,
+    AlunosDeactivateGuard,
+    AlunoDetalheResolver
   ],
 })
 export class AlunosModule { }

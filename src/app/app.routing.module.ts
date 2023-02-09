@@ -1,3 +1,4 @@
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
 
@@ -18,17 +19,24 @@ const appRoutes: Routes = [
   { path: 'cursos',
     loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule),
     canActivate: [AuthGuard],
-    canActivateChild: [CursosGuard]
+    canActivateChild: [CursosGuard],
+    canLoad: [AuthGuard]
   },
   { path: 'alunos',
     loadChildren: () => import('./alunos/alunos.module').then(m => m.AlunosModule),
     canActivate: [AuthGuard],
-    canActivateChild: [AlunosGuard]
+    canActivateChild: [AlunosGuard],
+    canLoad: [AuthGuard]
   },
+  //É interessante declarar o caminho vazio e a página não encontrada por ultimo, e o que está hardcoded antes
+  { path:'login', component: LoginComponent},
   { path:'', component: HomeComponent,
     canActivate: [AuthGuard]
   },
-  { path:'login', component: LoginComponent}
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '**', component: PaginaNaoEncontradaComponent,
+  // canActivate: [AuthGuard] Nesse caso, ele faria o redirecionamento para a página de Login
+}
   //Caso seja necessário colocar um outro caminho que precise de um ID, faremos da seguinte forma:
   // { path:'curso/:id', component: CursoDetalheComponent},
   // { path:'cursos', component: CursosComponent},
@@ -40,7 +48,8 @@ const appRoutes: Routes = [
 // export const routing: ModuleWithProviders<RouterModule> = ;
 
 @NgModule({
-  imports:[RouterModule.forRoot(appRoutes)],
+  //É interessante e bom o uso da hash quando estamos trabalhando junto do back end, afim de evitar que as linguagens de back não confundam url com "consumo de API"
+  imports:[RouterModule.forRoot(appRoutes, {useHash: true})],
   exports:[RouterModule]
 })
 export class AppRoutingModule{

@@ -15,8 +15,8 @@ export class AlunosGuard implements CanActivateChild{
     console.log(state);
 
     if(state.url.includes('editar')){
-      alert('Pode não, irmão')
-      return false;
+      // alert('Pode não, irmão')
+      // return false;
     }
 
     return true;

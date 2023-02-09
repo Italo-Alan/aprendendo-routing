@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Aluno } from './aluno';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlunosService {
 
-  private alunos: any[] = [
+  private alunos: Aluno[] = [
     {id: 1, nome: 'Italo', email:"italo@email.com"},
     {id: 2, nome: 'Isabelle', email:"isabelle@email.com"},
     {id: 3, nome: 'Ana', email:"ana@email.com"},
